@@ -5,14 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="bootstrap-4.5.3-dist/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="bootstrap-4.5.3-dist/js/bootstrap.js" type="text/javascript"></script>
+
+    <!--FONT-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
 </head>
 <body>
+    <div id="overlay">
+        <div id="overlaycard" class="card">
+            <div class="card-header" style="background-color: #2fb8b0;">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h4 style="color: #ffffff;">Pesan Broadcast</h4>
+                    </div>
+                    <div class="col-sm-5">
+                        <a type="button" class="buttondb float-right" onclick="off()" >Tutup</a>
+                        <a type="button" class="buttondb float-right" onclick="tambahpesan()" >Tambah</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="background-color: #efefef; overflow-y: scroll;">
+                <div id="Pesan" class="rounded m-2" style="height: 80px;background-color: #ffffff;overflow: hidden;">
+                    <div class="row m-0">
+                        <div class="col-sm-9">
+                            <div class="row m-0"><p>Judul Pesan</p></div>
+                            <div class="row m-0"><p style="font-size: small;">Ini adalah contoh template pesan yang akan digunakan</p></div>
+                        </div>
+                        <div class="col-sm-3 p-3">
+                            <div class="rounded float-right" style="width:70px;height: 50px;background-color:#c4c4c4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Pesan" class="rounded m-2" style="height: 80px;background-color: #ffffff;overflow: hidden;">
+                    <div class="row m-0">
+                        <div class="col-sm-9">
+                            <div class="row m-0"><p>Judul Pesan</p></div>
+                            <div class="row m-0"><p style="font-size: small;">Ini adalah contoh template pesan yang akan digunakan</p></div>
+                        </div>
+                        <div class="col-sm-3 p-3">
+                            <div class="rounded float-right" style="width:70px;height: 50px;background-color:#c4c4c4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
             <div class="row" style="height:80px;max-height:15%;background-color: #2fb8b0;">
-                
+
             </div>
             <div class="row" style="max-height: 65%;">
                 <div class="col-sm-5 p-3">
@@ -35,7 +79,7 @@
                                         <h4 style="color: #ffffff;">Pesan Broadcast</h4>
                                     </div>
                                     <div class="col-sm-3">
-                                        <a type="button" class="btn float-right" href="#" style="background-color: #127c78;color: #ffffff;">Template</a>
+                                        <a type="button" class="buttondb float-right" onclick="on()" >Template</a>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +96,7 @@
                                         <h4 style="color: #ffffff;">Pesan File/Gambar</h4>
                                     </div>
                                     <div class="col-sm-3">
-                                        <a type="button" class="btn float-right" href="#" style="background-color: #127c78;color: #ffffff;">upload</a>
+                                        <a type="button" class="buttondb float-right" href="#" >upload</a>
                                     </div>
                                 </div>
                             </div>
@@ -74,10 +118,84 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <button id="kirim" type="button" class="btn float-right" href="#" style="margin:0px 15px;background-color: #2fb8b0;color: #ffffff;">Kirim</button>
-                    <button id="batal" type="button" class="btn float-right" href="#" style="margin:0px 15px;background-color: #127c78;color: #ffffff;">Batal</button>
+                    <button id="kirim" type="button" class="buttonlb float-right" href="#" >Kirim</button>
+                    <button id="batal" type="button" class="buttondb float-right" href="#" >Batal</button>
                 </div>
             </div>
     </div>
+
+    <script>
+        function on() {
+          document.getElementById("overlay").style.display = "block";
+        }
+        
+        function off() {
+          document.getElementById("overlay").style.display = "none";
+        }
+        function tambahpesan() {
+            var html ='\
+            <div class="card-header" style="background-color: #2fb8b0;">\
+                <div class="row">\
+                    <div class="col-sm-9">\
+                        <h4 style="color: #ffffff;">Pesan Broadcast</h4>\
+                    </div>\
+                    <div class="col-sm-3">\
+                        <a type="button" class="buttondb float-right" onclick="kembali()" >Kembali</a>\
+                    </div>\
+                </div>\
+            </div>\
+            <div class="card-body" style="background-color: #efefef; overflow-y: scroll;">\
+                    <div class="form-group">\
+                        <label for="jdl" style="width:100%;">Judul:</label>\
+                        <input type="text" class="form-control" id="jdl" name="Judul">\
+                    </div>\
+                    <div class="form-group">\
+                        <label for="msg" style="width:100%;">Pesan:</label>\
+                        <textarea class="form-control" id="msg" rows="3"></textarea>\
+                    </div>\
+                    <button id="kirim" type="button" class="buttonlb float-right" href="#" >save</button>\
+            </div>';
+            document.getElementById("overlaycard").innerHTML = html;
+        }
+        function kembali(){
+            var html ='\
+            <div class="card-header" style="background-color: #2fb8b0;">\
+                <div class="row">\
+                    <div class="col-sm-7">\
+                        <h4 style="color: #ffffff;">Pesan Broadcast</h4>\
+                    </div>\
+                    <div class="col-sm-5">\
+                        <a type="button" class="buttondb float-right" onclick="off()" >Tutup</a>\
+                        <a type="button" class="buttondb float-right" onclick="tambahpesan()" >Tambah</a>\
+                    </div>\
+                </div>\
+            </div>\
+            <div class="card-body" style="background-color: #efefef; overflow-y: scroll;">\
+                <div id="Pesan" class="rounded m-2" style="height: 80px;background-color: #ffffff;overflow: hidden;">\
+                    <div class="row m-0">\
+                        <div class="col-sm-9">\
+                            <div class="row m-0"><p>Judul Pesan</p></div>\
+                            <div class="row m-0"><p style="font-size: small;">Ini adalah contoh template pesan yang akan digunakan</p></div>\
+                        </div>\
+                        <div class="col-sm-3 p-3">\
+                            <div class="rounded float-right" style="width:70px;height: 50px;background-color:#c4c4c4"></div>\
+                        </div>\
+                    </div>\
+                </div>\
+                <div id="Pesan" class="rounded m-2" style="height: 80px;background-color: #ffffff;overflow: hidden;">\
+                    <div class="row m-0">\
+                        <div class="col-sm-9">\
+                            <div class="row m-0"><p>Judul Pesan</p></div>\
+                            <div class="row m-0"><p style="font-size: small;">Ini adalah contoh template pesan yang akan digunakan</p></div>\
+                        </div>\
+                        <div class="col-sm-3 p-3">\
+                            <div class="rounded float-right" style="width:70px;height: 50px;background-color:#c4c4c4"></div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>';
+            document.getElementById("overlaycard").innerHTML = html;
+        }
+    </script>
 </body>
 </html>
